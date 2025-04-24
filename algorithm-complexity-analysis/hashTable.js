@@ -20,6 +20,16 @@ class LinkedList {
     this.head = newNode;
 
   }
+  find(key) {
+    if (!this.head) return;
+    if (this.head.key === key) return this.head;
+    let current = this.head.next;
+    while (current) {
+      if (current.key === key) return current;
+      current = current.next;
+    }
+    return null;
+  }
   *entries() {
     let current = this.head;
     while (current) {
@@ -35,6 +45,7 @@ class HashTable {
     this.size = size;
     this.table = new Array(size);
     this.count = 0;
+    this.keys = new Set();
   }
   hash(key) {
     let hash = 5381;
@@ -54,6 +65,15 @@ class HashTable {
     }
     const bucket = this.table[index];
     bucket.prepend(key, value)
+    this.keys.add(key)
+  }
+  get(key) {
+    const index = this.hash(key);
+    const bucket = this.table[index];
+    return bucket ? bucket.find(key) : null;
+  }
+  getAllKeys() {
+    return Array.from(this.keys);
   }
   resize(size) {
     const oldTable = this.table;
@@ -69,12 +89,44 @@ class HashTable {
   }
 }
 
-const table = new HashTable(2);
-table.set('name', 'John');
-table.set('age', 30);
-table.set('city', 'New York');
-table.set('country', 'USA');
-table.set('state', 'NY');
-table.set('color', 'Blue');
+class HashSet {
+  constructor() {
+    this.data = new HashTable()
+  }
+  add(value) {
+    if (this.has(value)) return;
+    this.data.set(value, true)
+  }
+  has(value) {
+    return !!this.data.get(value)
+  }
+  find(value) {
+    return this.data.get(value)
+  }
+  values() {
+    return this.data.getAllKeys();
+  }
+}
 
-console.log('table', JSON.stringify(table.table, null, 2))
+function commonElements(setA, setB) {
+  const result = new HashSet();
+  for (let elm of setA.values()) {
+    if (setB.has(elm)) {
+      result.add(elm)
+    }
+  }
+  return result.values().length;
+}
+
+const setA = new HashSet();
+const setB = new HashSet();
+setA.add('John');
+setB.add('John')
+setB.add(30);
+setA.add('New York');
+setB.add('USA');
+setA.add('NY');
+setB.add('Blue');
+console.log(commonElements(setA, setB));
+
+// console.log('table', JSON.stringify(table.table, null, 2))
