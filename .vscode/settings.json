@@ -17,5 +17,12 @@
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#38013d99",
     "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "javascript": true
   }
 }
