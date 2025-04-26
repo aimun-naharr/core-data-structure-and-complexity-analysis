@@ -91,3 +91,8 @@ class SecureHashTable {
   }
 
 }
+
+//Real world example
+//this secure hash table can be used to store user credentials in a secure way
+//and to check if the user is already registered or not
+// to get the user credentials by username

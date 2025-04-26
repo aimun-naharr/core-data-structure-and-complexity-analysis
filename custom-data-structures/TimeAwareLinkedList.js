@@ -57,3 +57,8 @@ setTimeout(() => {
   }, 2000);
 
 }, 2000);
+
+
+//Real world example
+// this TimeAwareLinkedList can be used to store random balls in a game
+// and retrieve the balls which are inserted in the last n seconds.
