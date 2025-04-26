@@ -54,6 +54,10 @@ class HashTable {
     }
     return Math.abs(hash) % this.size;
   }
+  //set
+  // O(n) - linear time complexity
+  // O(1) - constant space complexity
+  // asymptotic notation: O(n) - linear time complexity
   set(key, value) {
     if (this.count / this.size > 0.5) {
       this.resize(this.size * 2)
@@ -67,14 +71,26 @@ class HashTable {
     bucket.prepend(key, value)
     this.keys.add(key)
   }
+  //get
+  // O(n) - linear time complexity
+  // O(1) - constant space complexity
+  // asymptotic notation: O(n) - linear time complexity
   get(key) {
     const index = this.hash(key);
     const bucket = this.table[index];
     return bucket ? bucket.find(key) : null;
   }
+  //getAllKeys
+  // O(n) - linear time complexity
+  // O(n) - linear space complexity
+  // asymptotic notation: O(n) - linear time complexity
   getAllKeys() {
     return Array.from(this.keys);
   }
+  // resize
+  // O(n) - linear time complexity
+  // O(n) - linear space complexity
+  // asymptotic notation: O(n) - linear time complexity
   resize(size) {
     const oldTable = this.table;
     this.table = new Array(size)
@@ -108,6 +124,9 @@ class HashSet {
   }
 }
 
+// O(n) - linear time complexity
+// O(n) - linear space complexity
+// asymptotic notation: O(n) - linear time complexity
 function commonElements(setA, setB) {
   const result = new HashSet();
   for (let elm of setA.values()) {

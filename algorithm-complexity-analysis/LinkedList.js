@@ -62,6 +62,9 @@ class LinkedList {
   }
 }
 
+//asymptotic notation: O(n) - linear time complexity
+//space complexity: O(1) - constant space complexity
+//time complexity: O(n) - linear time complexity
 function arrayToLinkedList(arr) {
   if (arr.length < 1) return;
   const list = new LinkedList();
@@ -71,6 +74,10 @@ function arrayToLinkedList(arr) {
   return list;
 }
 
+
+//array vs hash set lookup performance
 const arr = [1, 2, 3, 4, 5];
-const list = arrayToLinkedList(arr)
-console.log('list', JSON.stringify(list.head, null, 2))
+console.log(arr.includes(4)); // O(n)
+
+const set = new Set([1, 2, 3, 4, 5]);
+console.log(set.has(4)); // O(1)
