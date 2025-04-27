@@ -2,16 +2,18 @@
 
 **Time Aware Linked list**
 
-#### Features
+##### Time complexities
 
-<!-- 1. Filter By time
-
-Operation | Time Complexity
-Insert at tail | O(1)
-Search by time | O(n) if arbitrary, but can often stop early -->
+| Operation      | Time Complexity                             |
+| -------------- | ------------------------------------------- |
+| Insert at tail | O(1)                                        |
+| Search by time | O(n) if arbitrary, but can often stop early |
 
 **Secure HashTable**
 
-#### Features
+##### Time complexities
 
-1.
+| Operation | Secure Hash Table |
+| --------- | ----------------- |
+| Insert    | O(1) average      |
+| Lookup    | O(1) average      |
